@@ -74,3 +74,32 @@ console.log(
     .map((product) => Number(product.price)) // convert string to numbers
     .reduce((total, price) => total + price) // calculate total
 );
+
+
+// 4. **Concatenate Product Names**: Use `reduce` to concatenate all product names into a single string.
+console.log(
+  products
+    .map((product) => product.product) // Return only the names
+    .reduce((list, name) => list.concat(name))
+);
+
+// 5. **Find Extremes in Prices**: Identify the highest and lowest-priced items, returning a string formatted as "Highest: X. Lowest: Y."
+console.log(
+  `Highest: ${Math.max(
+    ...products
+      .filter((product) => Number(product.price)) // filter out missing prices
+      .map((product) => Number(product.price)) // filter out missing prices
+  )}. Lowest: ${Math.min(
+    ...products
+      .filter((product) => Number(product.price)) // filter out missing prices
+      .map((product) => Number(product.price)) // filter out missing prices
+  )}.`
+);
+
+// 6. **Object Transformation**: Using `Object.entries` and `reduce`, recreate the products object with keys 'name' and 'cost', maintaining their original values.
+console.log(
+  Object.entries(products).reduce((acc, cur) => {
+    const { product, price } = cur[1]; // Index 1 used becuase Object.entries spreads index of original array into result
+    return [...acc, { name: product, cost: price }];
+  }, [])
+);

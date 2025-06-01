@@ -59,3 +59,18 @@ console.log(
     };
   }, {})
 );
+
+// Advanced Exercises 
+// 1. **Log Products**: Iterate over the products array, logging each product name.
+products.forEach((product) => console.log(product.product));
+
+// 2. **Filter by Name Length**: Filter out products with names longer than 5 characters.
+console.log(products.filter((product) => product.product.length <= 5));
+
+// 3. **Price Manipulation**: Filter out products without prices, convert string prices to numbers, and calculate the total price using `reduce`.
+console.log(
+  products
+    .filter((product) => Number(product.price)) // filter out missing prices
+    .map((product) => Number(product.price)) // convert string to numbers
+    .reduce((total, price) => total + price) // calculate total
+);
